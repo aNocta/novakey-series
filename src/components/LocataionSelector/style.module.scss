@@ -1,0 +1,19 @@
+@function to_rem($percents) {
+    @return calc($percents/16)+rem;
+}
+
+@mixin mobile {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: to_rem(24);
+
+    @include mobile {
+        grid-template-columns: 1fr;
+    }
+}

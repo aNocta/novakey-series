@@ -1,0 +1,53 @@
+@function to_rem($percents) {
+    @return calc($percents/16)+rem;
+}
+
+$main-color: #0f0f0f;
+
+.button {
+    display: grid;
+    background: white;
+    border: to_rem(2) solid #909090;
+    padding: to_rem(10) to_rem(30);
+    border-radius: to_rem(10);
+    grid-template-columns: auto to_rem(45);
+    cursor: pointer;
+    transition: .3s;
+    column-gap: to_rem(72);
+
+    &:hover {
+        background-color: hsl(0, 0%, 95%);
+    }
+
+    h3 {
+        font-weight: bold;
+        color: $main-color;
+        font-size: to_rem(24);
+        margin: 0;
+    }
+
+    p {
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    h3,
+    p {
+        text-align: left;
+    }
+
+    svg {
+        width: to_rem(45);
+        height: to_rem(45);
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 2;
+        grid-column-end: 2;
+        align-self: center;
+    }
+
+}
+
+button.active {
+    border-color: black;
+}
