@@ -1,3 +1,5 @@
+$blue: #466ac8;
+
 @function to_rem($percents) {
     @return calc($percents/16)+rem;
 }
@@ -11,25 +13,39 @@
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: to_rem(50);
-    row-gap: to_rem(10);
-    margin-top: to_rem(13);
-
-    @include mobile {
-        grid-template-columns: 1fr;
-    }
+    column-gap: to_rem(93);
+    row-gap: to_rem(11);
+    width: to_rem(500);
+    height: fit-content;
 }
 
 .attribute {
     display: grid;
-    grid-auto-flow: column;
-    gap: to_rem(11);
+    grid-template-columns: to_rem(40) auto;
+    gap: to_rem(17);
     align-items: center;
+    align-content: flex-start;
 
     &>span {
         font-size: to_rem(12);
         color: black;
         font-weight: 500;
+
+        h3 {
+            font-weight: 500;
+            font-size: 1rem;
+            margin: 0;
+            color: $blue;
+        }
+
+        p {
+            margin: 0;
+            text-wrap: balance;
+        }
+
+        bdi {
+            color: $blue;
+        }
     }
 
     &_bage {
@@ -37,8 +53,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: to_rem(40);
-        width: to_rem(40);
+        height: to_rem(48);
+        width: to_rem(48);
         padding: to_rem(5) to_rem(10);
         border-radius: to_rem(10);
         font-size: to_rem(10);
@@ -47,6 +63,7 @@
         color: black;
         background-color: #dae1f1;
         text-align: center;
+        border: to_rem(4) solid;
 
         img {
             width: to_rem(20);

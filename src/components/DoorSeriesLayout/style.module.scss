@@ -10,11 +10,6 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: to_rem(30);
-    margin-top: to_rem(43);
-
-    @include mobile {
-        grid-template-columns: 1fr;
-    }
+    gap: to_rem(40);
+    margin-top: to_rem(35);
 }
