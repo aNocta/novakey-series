@@ -1,6 +1,4 @@
-import { useDispatch } from "react-redux";
 import { SeriesAttributeList } from "../../interfaces/SeriesAttributeList";
-import { selectSeries } from "../../slices/series-slice";
 import { SeriesAttributes } from "../SeriesAttributes/SeriesAttributes";
 import styles from "./series-item.module.scss";
 
@@ -19,14 +17,10 @@ const Price = ({ price }: { price?: number }) => {
     const formatter = new Intl.NumberFormat('de');
     return <span className={styles.card__price}>от {formatter.format(price).replace(".", " ")} ₽</span>;
 };
-export const SeriesItem = ({ title, price, image, attributes, description, id, hideButton }: Props) => {
-    //  <SeriesAttributes thickness={attributes.thickness} base_image={attributes.base_image} safety_rating={attributes.safety_rating} sound_absorption={attributes.sound_absorption} />
-    const dispatch = useDispatch();
-    const select = () => {
-        dispatch(selectSeries(id));
-    }
+export const SeriesItem = ({ title, price, image, attributes, description, hideButton }: Props) => {
+
     return (
-        <div onClick={select} className={styles.card}>
+        <div className={`${styles.card} ${hideButton && styles.card_active}`}>
             {image && <img src={image} alt={title} draggable="false" loading="lazy" decoding="async" />}
             <div className={styles.card__content}>
                 <div className={styles.card__header}>

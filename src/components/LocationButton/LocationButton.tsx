@@ -6,20 +6,16 @@ interface LocationButtonProps {
     header: string;
     description: string;
     checked?: boolean;
-    callback: (location: "room" | "house") => void;
     location: "room" | "house";
 }
 
-export const LocationButton = ({ icon, header, description, checked, callback, location }: LocationButtonProps) => {
+export const LocationButton = ({ icon, header, description, checked }: LocationButtonProps) => {
     let additionalClass = "";
     if (checked) {
         additionalClass = styles.active;
     }
-    const clickEvent = () => {
-        callback(location);
-    }
     return (
-        <button onClick={clickEvent} className={`${styles.button} ${additionalClass}`}>
+        <button className={`${styles.button} ${additionalClass}`}>
             <h3>{header}</h3>
             <p>{description}</p>
             {icon}

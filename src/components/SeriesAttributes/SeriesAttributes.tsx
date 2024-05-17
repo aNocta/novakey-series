@@ -3,7 +3,6 @@ import { SeriesAttributeList } from "../../interfaces/SeriesAttributeList";
 
 
 export const SeriesAttributes = ({ thickness, sound_absorption, safety_rating, guarantee, locking_points, lock }: SeriesAttributeList) => {
-    console.log(guarantee);
     return (
         <div className={styles.grid}>
             <div className={styles.attribute}>

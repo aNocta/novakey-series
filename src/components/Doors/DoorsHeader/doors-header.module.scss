@@ -49,10 +49,4 @@
             height: to_rem(19);
         }
     }
-
-    @include mobile {
-        gap: to_rem(10);
-        align-items: flex-start;
-        flex-direction: column;
-    }
 }
