@@ -2,6 +2,12 @@
     @return calc($percents/16)+rem;
 }
 
+@mixin mobile {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+
 .card {
     display: grid;
     grid-template-columns: to_rem(200) 1fr;
@@ -11,6 +17,7 @@
     background-color: white;
     transition: .3s;
     overflow: hidden;
+    cursor: pointer;
 
     &>img {
         width: 100%;
@@ -24,7 +31,6 @@
         font-size: to_rem(24);
         font-weight: 500;
         color: black;
-        text-transform: uppercase;
     }
 
     &__header {
@@ -34,7 +40,8 @@
     }
 
     &__price {
-        font-size: 1rem;
+        font-size: 1.2rem;
+        margin-block: to_rem(5);
         color: #8e8787;
         font-weight: 500;
     }
@@ -50,6 +57,12 @@
         justify-content: space-between;
         padding-block: to_rem(23);
         padding-right: to_rem(30);
+
+        @include mobile {
+            grid-auto-flow: row;
+            padding-right: 0;
+            padding-top: 0;
+        }
     }
 
     button {
@@ -71,9 +84,18 @@
             width: to_rem(18);
             height: to_rem(16);
         }
+
+        @include mobile {
+            display: none;
+        }
     }
 
     &:hover {
         border-color: black;
+    }
+
+    @include mobile {
+        grid-template-columns: 1fr;
+        gap: to_rem(20);
     }
 }

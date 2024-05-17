@@ -1,10 +1,10 @@
-import { Attribute, SafetyRating, Lock } from "./Attribute";
+import { Attribute, SafetyRating, Lock, Guarantee } from "./Attribute";
 
 export interface SeriesAttributeList {
     thickness: Attribute;
     sound_absorption: Attribute;
     safety_rating: SafetyRating;
     locking_points: Attribute;
-    guarantee: Attribute;
+    guarantee: Guarantee;
     lock: Lock
 };

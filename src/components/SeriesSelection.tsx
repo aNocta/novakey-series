@@ -1,17 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
 import { get_series } from "../api/get-series";
 import { LocationSelector } from "./LocataionSelector/LocationSelector";
 import { LocationButton } from "./LocationButton/LocationButton";
 import { DoorSeriesLayout } from "./DoorSeriesLayout/DoorSeriesLayout";
 import { SeriesItem } from "./SeriesItem/SeriesItem";
+import { useDispatch, useSelector } from "react-redux";
+import { SeriesState, selectCurrentLocation } from "../slices/series-slice";
+import { Loader } from "./Loader/Loader";
 
 export const SeriesSelection = () => {
-    const [location, setLocation] = useState<string>("room");
+    const dispatch = useDispatch();
+    const location = useSelector((state: { series: SeriesState }) => state.series.currentLocation);
     const query = useQuery({ queryKey: ["series", location], queryFn: () => get_series(location) });
     const queryData = query.data;
-    const selectLocation = (loc: string) => {
-        setLocation(loc);
+    const selectLocation = (loc: "room" | "house") => {
+        dispatch(selectCurrentLocation(loc));
         query.refetch();
     };
     return <div className="app">
@@ -47,5 +50,6 @@ export const SeriesSelection = () => {
                 lock: x.locks
             }} id={x.id} title={x.title} price={x.min_price} image={x.image} key={k} description={x.description}></SeriesItem>)}
         </DoorSeriesLayout>
+        {query.isLoading && <Loader />}
     </div>;
 }

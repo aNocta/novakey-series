@@ -1,0 +1,52 @@
+@function to_rem($percents) {
+    @return calc($percents/16)+rem;
+}
+
+@mixin mobile {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: to_rem(30);
+    margin-bottom: to_rem(35);
+
+    @include mobile {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background-color: white;
+    padding: to_rem(25) to_rem(30);
+    border-radius: to_rem(10);
+    border: to_rem(1) solid #909090;
+    cursor: pointer;
+    transition: .3s;
+
+    h3 {
+        font-size: to_rem(24);
+        font-weight: 500;
+        margin: 0;
+    }
+
+    span {
+        color: #8e8787;
+        font-size: to_rem(20);
+        font-weight: 500;
+    }
+
+    &:hover,
+    &_active {
+        background: black;
+
+        h3,
+        span {
+            color: white;
+        }
+    }
+
+}

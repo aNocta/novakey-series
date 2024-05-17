@@ -6,8 +6,8 @@ interface LocationButtonProps {
     header: string;
     description: string;
     checked?: boolean;
-    callback: (location: string) => void;
-    location: string;
+    callback: (location: "room" | "house") => void;
+    location: "room" | "house";
 }
 
 export const LocationButton = ({ icon, header, description, checked, callback, location }: LocationButtonProps) => {

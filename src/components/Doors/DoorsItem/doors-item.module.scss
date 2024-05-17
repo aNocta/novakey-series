@@ -1,0 +1,137 @@
+@function to_rem($percents) {
+    @return calc($percents/16)+rem;
+}
+
+@mixin mobile {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: white;
+    border-radius: to_rem(10);
+    border: to_rem(2) solid transparent;
+    padding: to_rem(27) to_rem(40) to_rem(34);
+    box-sizing: border-box;
+    transition: .3s;
+    min-height: to_rem(567);
+    position: relative;
+    cursor: pointer;
+
+    &>button {
+        top: to_rem(30);
+        right: to_rem(38);
+        position: absolute;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        transition: .3s;
+        opacity: 0;
+    }
+
+    &:hover>button {
+        opacity: 1;
+    }
+
+    &__content {
+        display: grid;
+        justify-content: space-between;
+        height: 100%;
+
+        h3 {
+            color: black;
+            font-size: to_rem(24);
+            font-weight: 500;
+        }
+
+        span {
+            font-size: to_rem(32);
+            margin-top: to_rem(15);
+            align-self: flex-end;
+        }
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: to_rem(20);
+        margin: to_rem(22) 0 0;
+
+        button {
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            width: to_rem(40);
+            height: to_rem(40);
+            background: black;
+            border: none;
+            border-radius: 100vw;
+            opacity: 0;
+            transition: .3s;
+            cursor: pointer;
+
+            svg {
+                width: to_rem(18);
+                height: to_rem(16);
+            }
+
+            @include mobile {
+                display: none;
+            }
+        }
+    }
+
+    img {
+        display: block;
+        margin-inline: auto;
+        width: to_rem(177);
+        height: to_rem(401);
+        flex-shrink: 0;
+    }
+
+    &__promotional {
+        display: inline-flex;
+        align-items: flex-end;
+        margin-top: to_rem(15);
+        gap: to_rem(13);
+
+        span {
+            margin: 0;
+            color: #f6a70c;
+            line-height: 1;
+        }
+
+        del {
+            font-weight: 500;
+            font-size: to_rem(20);
+            color: #9a958b;
+        }
+
+        @include mobile {
+            align-items: flex-start;
+            flex-direction: column;
+
+            span {
+                align-self: flex-start;
+            }
+        }
+    }
+
+    &:hover {
+        border-color: black;
+
+        button {
+            opacity: 1;
+        }
+    }
+}

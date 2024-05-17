@@ -1,0 +1,58 @@
+@function to_rem($percents) {
+    @return calc($percents/16)+rem;
+}
+
+@mixin mobile {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: to_rem(73);
+
+    label {
+        position: relative;
+
+        svg {
+            position: absolute;
+            width: to_rem(14);
+            height: to_rem(9);
+            top: calc(50% - to_rem(9)/2);
+            right: to_rem(15);
+        }
+    }
+
+    select {
+        border: to_rem(1) solid black;
+        border-radius: to_rem(10);
+        padding: to_rem(10) to_rem(41) to_rem(10) to_rem(23);
+        font-size: to_rem(14);
+        appearance: none;
+        box-sizing: content-box;
+    }
+
+    button {
+        display: flex;
+        gap: to_rem(6);
+        align-items: center;
+        font-size: to_rem(24);
+        font-weight: 500;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+
+        svg {
+            width: to_rem(20);
+            height: to_rem(19);
+        }
+    }
+
+    @include mobile {
+        gap: to_rem(10);
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

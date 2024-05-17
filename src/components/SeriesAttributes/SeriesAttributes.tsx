@@ -3,6 +3,7 @@ import { SeriesAttributeList } from "../../interfaces/SeriesAttributeList";
 
 
 export const SeriesAttributes = ({ thickness, sound_absorption, safety_rating, guarantee, locking_points, lock }: SeriesAttributeList) => {
+    console.log(guarantee);
     return (
         <div className={styles.grid}>
             <div className={styles.attribute}>
@@ -11,7 +12,7 @@ export const SeriesAttributes = ({ thickness, sound_absorption, safety_rating, g
             </div>
             <div className={styles.attribute}>
                 <div className={styles.attribute_bage} style={{ borderColor: guarantee.colour }}><span>{guarantee.value}</span>лет</div>
-                <span>Гарантия</span>
+                <span>Гарантия<br /><bdi>{guarantee.description}</bdi></span>
             </div>
             <div className={styles.attribute}>
                 <div className={styles.attribute_bage} style={{ borderColor: sound_absorption.colour }}><span>{sound_absorption.value}</span>дБ</div>

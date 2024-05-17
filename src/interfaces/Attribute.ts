@@ -8,3 +8,6 @@ export interface Lock extends Attribute {
 export interface SafetyRating extends Attribute {
     status: string;
 }
+export interface Guarantee extends Attribute {
+    description: string;
+}
